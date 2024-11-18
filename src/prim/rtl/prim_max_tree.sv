@@ -42,9 +42,9 @@ module prim_max_tree #(
   // Align to powers of 2 for simplicity.
   // A full binary tree with N levels has 2**N + 2**N-1 nodes.
   localparam int NumLevels = $clog2(NumSrc);
-  logic [2**(NumLevels+1)-2:0]               vld_tree;
-  logic [2**(NumLevels+1)-2:0][SrcWidth-1:0] idx_tree;
-  logic [2**(NumLevels+1)-2:0][Width-1:0]    max_tree;
+  logic [2**(NumLevels+1)-2:0]               vld_tree /*verilator split_var*/;
+  logic [2**(NumLevels+1)-2:0][SrcWidth-1:0] idx_tree /*verilator split_var*/;
+  logic [2**(NumLevels+1)-2:0][Width-1:0]    max_tree /*verilator split_var*/;
 
   for (genvar level = 0; level < NumLevels+1; level++) begin : gen_tree
     //
