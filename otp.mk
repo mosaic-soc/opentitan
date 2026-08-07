@@ -20,7 +20,6 @@ DIFGEN   ?= $(OTPROOT)/util/make_new_dif.py
 
 _otp: otp_gpio
 _otp: otp_i2c
-_otp: otp_spi_host
 _otp: otp_rv_plic
 _otp: otp_reg_hdrs
 
@@ -47,9 +46,6 @@ otp_gpio: $(OTPROOT)/src/gpio/data/gpio.hjson $(REGTOOL)
 otp_i2c: $(OTPROOT)/src/i2c/data/i2c.hjson $(REGTOOL)
 	$(REGTOOL) -r -t $(OTPROOT)/src/i2c/rtl $<
 
-otp_spi_host: $(OTPROOT)/src/spi_host/data/spi_host.hjson $(REGTOOL)
-	$(REGTOOL) -r -t $(OTPROOT)/src/spi_host/rtl $<
-
 # Generate software for peripherals
 OTP_REG_DIR  = $(OTPROOT)/sw/include
 
@@ -63,7 +59,6 @@ endef
 
 $(eval $(call hdr_gen_rule,gpio,$(OTPROOT)/src/gpio/data/gpio.hjson))
 $(eval $(call hdr_gen_rule,i2c,$(OTPROOT)/src/i2c/data/i2c.hjson))
-$(eval $(call hdr_gen_rule,spi_host,$(OTPROOT)/src/spi_host/data/spi_host.hjson))
 $(eval $(call hdr_gen_rule,rv_plic,$(OTPROOT)/src/rv_plic/data/rv_plic.hjson))
 
 otp_reg_hdrs: $(OTP_REG_HDRS)

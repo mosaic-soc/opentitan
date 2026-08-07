@@ -23,7 +23,6 @@ vendor_package:
       - {from: 'hw/ip/prim', to: 'src/prim', patch_dir: 'prim'}
       - {from: 'hw/ip/gpio', to: 'src/gpio', patch_dir: 'gpio'}
       - {from: 'hw/ip/i2c', to: 'src/i2c', patch_dir: 'i2c'}
-      - {from: 'hw/ip/spi_host', to: 'src/spi_host', patch_dir: 'spi_host'}
       - {from: 'hw/ip_templates/rv_plic/data', to: 'src/rv_plic/tpl/rv_plic/data', patch_dir: 'rv_plic/tpl/data'}
       - {from: 'hw/ip_templates/rv_plic/rtl', to: 'src/rv_plic/tpl/rv_plic/rtl', patch_dir: 'rv_plic/tpl/rtl'}
       # Software dependencies
@@ -44,8 +43,6 @@ vendor_package:
       - {from: 'sw/device/lib/dif/autogen/dif_gpio_autogen.h', to: 'sw/device/lib/dif/autogen/dif_gpio_autogen.h'}
       - {from: 'sw/device/lib/dif/autogen/dif_i2c_autogen.c', to: 'sw/device/lib/dif/autogen/dif_i2c_autogen.c'}
       - {from: 'sw/device/lib/dif/autogen/dif_i2c_autogen.h', to: 'sw/device/lib/dif/autogen/dif_i2c_autogen.h'}
-      - {from: 'sw/device/lib/dif/autogen/dif_spi_host_autogen.c', to: 'sw/device/lib/dif/autogen/dif_spi_host_autogen.c'}
-      - {from: 'sw/device/lib/dif/autogen/dif_spi_host_autogen.h', to: 'sw/device/lib/dif/autogen/dif_spi_host_autogen.h'}
       - {from: 'sw/device/lib/dif/autogen/dif_rv_plic_autogen.c', to: 'sw/device/lib/dif/autogen/dif_rv_plic_autogen.c'}
       - {from: 'sw/device/lib/dif/autogen/dif_rv_plic_autogen.h', to: 'sw/device/lib/dif/autogen/dif_rv_plic_autogen.h'}
       # Main DIFs
@@ -53,8 +50,6 @@ vendor_package:
       - {from: 'sw/device/lib/dif/dif_gpio.h', to: 'sw/device/lib/dif/dif_gpio.h'}
       - {from: 'sw/device/lib/dif/dif_i2c.c', to: 'sw/device/lib/dif/dif_i2c.c'}
       - {from: 'sw/device/lib/dif/dif_i2c.h', to: 'sw/device/lib/dif/dif_i2c.h'}
-      - {from: 'sw/device/lib/dif/dif_spi_host.c', to: 'sw/device/lib/dif/dif_spi_host.c', patch_dir: 'sw/dif_spi_host_c'}
-      - {from: 'sw/device/lib/dif/dif_spi_host.h', to: 'sw/device/lib/dif/dif_spi_host.h', patch_dir: 'sw/dif_spi_host_h'}
       - {from: 'sw/device/lib/dif/dif_rv_plic.c', to: 'sw/device/lib/dif/dif_rv_plic.c', patch_dir: 'sw/dif_rv_plic_c'}
       - {from: 'sw/device/lib/dif/dif_rv_plic.h', to: 'sw/device/lib/dif/dif_rv_plic.h'}
       # Utilities
@@ -110,31 +105,19 @@ sources:
   - src/gpio/rtl/gpio_reg_pkg.sv
   - src/i2c/rtl/i2c_reg_pkg.sv
   - src/rv_plic/rtl/rv_plic_reg_pkg.sv
-  - src/spi_host/rtl/spi_host_reg_pkg.sv
   # Level 1 (generated, see README for regeneration)
   - src/gpio/rtl/gpio_reg_top.sv
   - src/i2c/rtl/i2c_reg_top.sv
   - src/rv_plic/rtl/rv_plic_reg_top.sv
-  - src/spi_host/rtl/spi_host_reg_top.sv
   # Level 2
   - src/i2c/rtl/i2c_pkg.sv
   # Level 3
   - src/i2c/rtl/i2c_fsm.sv
   - src/rv_plic/rtl/rv_plic_gateway.sv
-  - src/spi_host/rtl/spi_host_byte_merge.sv
-  - src/spi_host/rtl/spi_host_byte_select.sv
-  - src/spi_host/rtl/spi_host_cmd_pkg.sv
-  - src/spi_host/rtl/spi_host_command_queue.sv
-  - src/spi_host/rtl/spi_host_fsm.sv
-  - src/spi_host/rtl/spi_host_window.sv
-  - src/spi_host/rtl/spi_host_data_fifos.sv
-  - src/spi_host/rtl/spi_host_shift_register.sv
   # Level 4
   - src/i2c/rtl/i2c_core.sv
   - src/rv_plic/rtl/rv_plic_target.sv
-  - src/spi_host/rtl/spi_host_core.sv
   # Level 5
   - src/gpio/rtl/gpio.sv
   - src/i2c/rtl/i2c.sv
-  - src/spi_host/rtl/spi_host.sv
   - src/rv_plic/rtl/rv_plic.sv
